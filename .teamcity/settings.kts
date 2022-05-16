@@ -1,6 +1,7 @@
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.CustomChart
 import jetbrains.buildServer.configs.kotlin.CustomChart.*
+import jetbrains.buildServer.configs.kotlin.buildFeatures.freeDiskSpace
 import jetbrains.buildServer.configs.kotlin.buildSteps.maven
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.ideaRunner
@@ -87,6 +88,13 @@ object Build : BuildType({
 
     triggers {
         vcs {
+        }
+    }
+
+    features {
+        freeDiskSpace {
+            requiredSpace = "4gb"
+            failBuild = false
         }
     }
 
